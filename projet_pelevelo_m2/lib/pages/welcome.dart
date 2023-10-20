@@ -1,3 +1,4 @@
+// ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:projet_pelevelo_m2/pages/login.dart';
 
@@ -39,7 +40,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     letterSpacing: 1,
                   ),
                 ),
-                const SizedBox(height: 80,),
+                const SizedBox(height: 100,),
                 const SizedBox(
                   width: 357,
                   height: 66,
@@ -57,23 +58,50 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                 ),
-                                const SizedBox(height: 50,),
-                const SizedBox(
-                  width: 297,
-                  height: 19,
-                  child: Text(
-                    'Lorem ipsum dolor sit amet,\n\n consectetur adipiscing elit,\n\n sed do eiusmod tempor incididunt u',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 0.10,
-                    ),
+                const SizedBox(height: 20,),
+
+                Container (
+                  padding: const EdgeInsets.all(16.0),
+                  width: MediaQuery.of(context).size.width*0.8,
+                  child: const Column (
+                    children: <Widget>[
+                        Text ("Lorem ipsum dolor sit amet,",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                            height: 0.10,
+                          ),
+                        ),
+                        SizedBox(height: 30,),
+                        Text ("consectetur adipiscing elit, sed",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                            height: 0.10,
+                          ),
+                        ),
+                        SizedBox(height: 30,),
+                        Text ("do eiusmod tempor incididunt u",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                            height: 0.10,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-                                const SizedBox(height: 100,),
+
+                const SizedBox(height: 50,),
                 SizedBox(
                   width: 300,
                   height: 39,
