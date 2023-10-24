@@ -1,9 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:projet_pelevelo_m2/pages/login.dart';
 
 class RegisterPage extends StatefulWidget {
- const RegisterPage({super.key});
+const RegisterPage({super.key});
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -22,6 +24,52 @@ class _RegisterPageState extends State<RegisterPage> {
   bool isTextFieldEmpty1 = true;                        // variable to know if text has been written or not in the last name TextField
   bool isTextFieldEmpty2 = true;                        // variable to know if text has been written or not in the email TextField
   bool isChecked = false;                               // variable linked to the checkbox state
+  FirebaseAuth auth = FirebaseAuth.instance;    // define the variable 'auth' as a FirebaseAuth instance
+
+   void register () async {  // Register Function
+      try {
+        // Collect informations (mail and password) entered by the user
+        UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text,);
+        // Register complete
+        //postDetailsToFirestore(); // We use the "postDetailsToFirestore" to add user in the Firestore databse
+        // We print a message to indicate that the account has been created 
+        Fluttertoast.showToast(
+          msg: "Account created",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.TOP,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+        // User is redirected to the next page (Login Page)
+        // ignore: use_build_context_synchronously
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()),);
+      } on FirebaseAuthException catch (e) {    // if an error appears, we catch it to print it thanks to a toast
+        if (e.code == 'weak-password') {  // ERROR: Weak Password (if password < 6 characters)
+          Fluttertoast.showToast(         // print error message
+            msg: "Please chose a stronger password",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.TOP,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
+        } else if (e.code == 'email-already-in-use') {  // ERROR: Email is already used
+            Fluttertoast.showToast(                     // print error message
+              msg: "Email already used",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.TOP,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0,
+            );
+        }
+      }
+    }
+
 
   @override
   Widget build(BuildContext context) {
@@ -430,7 +478,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 // if pressed, we do the login function
                 onPressed: () {
-                  //register();
+                  register();
                 },
                 child: 
                   const Text(

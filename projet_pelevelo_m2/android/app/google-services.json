@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "882236550504",
+    "project_id": "pelevelo-da59e",
+    "storage_bucket": "pelevelo-da59e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882236550504:android:a75117e53ec1e2c714badd",
+        "android_client_info": {
+          "package_name": "com.example.projet_pelevelo_m2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj19qPfUGr8reNH7y5DYJcMZzLLs_KlTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
